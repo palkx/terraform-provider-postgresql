@@ -154,7 +154,7 @@ func resourcePostgreSQLDatabaseSettingReadImpl(db *DBConnection, d *schema.Resou
 SELECT s.setconfig
 FROM pg_db_role_setting s
 JOIN pg_database dbs ON dbs.oid = s.setdatabase
-WHERE r.rolname = 0 AND dbs.datname = $1
+WHERE dbs.datname = $1
 `
 	var setconfig []string
 	err := db.QueryRow(query, database).Scan(pq.Array(&setconfig))
