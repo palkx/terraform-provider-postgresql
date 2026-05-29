@@ -3,9 +3,10 @@ package postgresql
 import (
 	"context"
 	"fmt"
+	"os"
+
 	"github.com/aws/aws-sdk-go-v2/credentials"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
-	"os"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/policy"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -203,6 +204,7 @@ func Provider() *schema.Provider {
 
 		ResourcesMap: map[string]*schema.Resource{
 			"postgresql_database":                  resourcePostgreSQLDatabase(),
+			"postgresql_database_setting":          resourcePostgreSQLDatabaseSetting(),
 			"postgresql_default_privileges":        resourcePostgreSQLDefaultPrivileges(),
 			"postgresql_extension":                 resourcePostgreSQLExtension(),
 			"postgresql_grant":                     resourcePostgreSQLGrant(),
